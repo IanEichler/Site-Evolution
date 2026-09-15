@@ -176,12 +176,41 @@ h3 { font-size: 24px; font-weight: 700; }
 .text-link { display: inline-flex; gap: 10px; color: var(--wine); font-size: 13px; font-weight: 800; text-underline-offset: 5px; }
 .challenge-list details, .faq-list details, .credentials, .journey-detail, .more-stories { border-top: 1px solid var(--line); }
 .challenge-list details:last-child, .faq-list details:last-child { border-bottom: 1px solid var(--line); }
-summary { list-style: none; cursor: pointer; }
+summary { list-style: none; cursor: pointer; transition: color .2s ease; }
 summary::-webkit-details-marker { display: none; }
+.challenge-list summary:hover, .challenge-list summary:focus-visible,
+.faq-list summary:hover, .faq-list summary:focus-visible,
+.credentials summary:hover, .credentials summary:focus-visible,
+.journey-detail > summary:hover, .journey-detail > summary:focus-visible,
+.more-stories > summary:hover, .more-stories > summary:focus-visible { color: var(--copper); }
+.is-animating { will-change: height; }
 .challenge-list summary { display: grid; grid-template-columns: 34px 1fr auto; gap: 14px; align-items: center; padding: 25px 0; font-size: 17px; font-weight: 700; }
 .challenge-list summary > span { color: var(--copper); font-size: 11px; }
-.challenge-list summary b, .faq-list summary span, .credentials summary span, .journey-detail summary span, .more-stories summary span { transition: transform .2s ease; }
+.challenge-list summary b, .faq-list summary > span:last-child, .credentials summary > span:last-child, .journey-detail > summary > span:last-child, .more-stories > summary > span:last-child {
+  display: inline-grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  place-items: center;
+  border: 1px solid #cdbeb7;
+  border-radius: 50%;
+  color: var(--wine);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  transition: transform .28s cubic-bezier(.22,1,.36,1), border-color .2s ease, background .2s ease, color .2s ease;
+}
+summary:hover > b, summary:focus-visible > b,
+.faq-list summary:hover > span:last-child, .faq-list summary:focus-visible > span:last-child,
+.credentials summary:hover > span:last-child, .credentials summary:focus-visible > span:last-child,
+.journey-detail > summary:hover > span:last-child, .journey-detail > summary:focus-visible > span:last-child,
+.more-stories > summary:hover > span:last-child, .more-stories > summary:focus-visible > span:last-child {
+  border-color: var(--copper);
+  background: var(--copper);
+  color: var(--white);
+}
 details[open] summary b, details[open] summary > span:last-child { transform: rotate(45deg); }
+details.is-closing summary b, details.is-closing summary > span:last-child { transform: rotate(0); }
 .challenge-list details > p { padding: 0 48px 24px; color: var(--ink-soft); }
 
 .journey { background: var(--paper); }
@@ -272,7 +301,9 @@ footer { padding: 40px 0; background: var(--paper); }
 .footer-inner p { margin: 0; color: var(--ink-soft); font-size: 12px; }
 .footer-inner > span { justify-self: end; color: var(--ink-soft); font-size: 10px; }
 .video-dialog { width: min(900px, calc(100% - 32px)); padding: 0; overflow: hidden; border: 0; border-radius: 16px; background: var(--paper); color: var(--ink); box-shadow: 0 30px 90px rgba(0,0,0,.35); }
+.video-dialog[open] { animation: dialog-in .3s cubic-bezier(.22,1,.36,1); }
 .video-dialog::backdrop { background: rgba(24, 14, 18, .82); }
+.video-dialog[open]::backdrop { animation: backdrop-in .25s ease-out; }
 .dialog-top { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; }
 .dialog-top h2 { margin: 0; font-size: 17px; }
 .close-dialog { width: 38px; height: 38px; border: 0; border-radius: 50%; background: var(--cream); cursor: pointer; }
@@ -280,6 +311,19 @@ footer { padding: 40px 0; background: var(--paper); }
 #video-container iframe { width: 100%; height: 100%; border: 0; }
 #youtube-fallback { display: block; padding: 14px 20px; color: var(--wine); font-size: 12px; font-weight: 700; }
 .mobile-application { display: none; }
+
+@keyframes dialog-in {
+  from { opacity: 0; transform: translateY(14px) scale(.975); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes menu-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 :focus-visible { outline: 3px solid #dc9b79; outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
@@ -333,7 +377,7 @@ footer { padding: 40px 0; background: var(--paper); }
     background: var(--paper);
     box-shadow: 0 18px 28px rgba(47,32,37,.08);
   }
-  nav.open { display: flex; }
+  nav.open { display: flex; animation: menu-in .22s cubic-bezier(.22,1,.36,1); }
   nav a { width: 100%; padding: 12px; text-align: center; }
   .hero-grid { grid-template-columns: 1fr; gap: 0; }
   .hero-copy { padding-bottom: 52px; }

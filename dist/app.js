@@ -19,6 +19,41 @@ const nextStory=document.querySelector('#story-next');
 const storyPosition=document.querySelector('#story-position');
 const mobileView=window.matchMedia('(max-width: 740px)');
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+
+// Expansões suaves mantêm o contexto visual sem esconder conteúdo de quem reduz movimento.
+document.querySelectorAll('details').forEach(detail=>{
+  const summary=detail.querySelector(':scope > summary');
+  if(!summary)return;
+  summary.addEventListener('click',event=>{
+    if(reducedMotion.matches||typeof detail.animate!=='function')return;
+    event.preventDefault();
+    if(detail.classList.contains('is-animating'))return;
+    const closing=detail.open;
+    const startHeight=detail.offsetHeight;
+    if(!closing)detail.open=true;
+    const endHeight=closing?summary.offsetHeight:detail.offsetHeight;
+    detail.classList.add('is-animating',closing?'is-closing':'is-opening');
+    detail.style.height=`${startHeight}px`;
+    detail.style.overflow='clip';
+    const content=[...detail.children].filter(child=>child!==summary);
+    content.forEach(child=>child.animate(
+      closing
+        ?[{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-6px)'}]
+        :[{opacity:0,transform:'translateY(-6px)'},{opacity:1,transform:'translateY(0)'}],
+      {duration:closing?170:240,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'}
+    ));
+    const animation=detail.animate(
+      [{height:`${startHeight}px`},{height:`${endHeight}px`}],
+      {duration:closing?240:320,easing:'cubic-bezier(.22,1,.36,1)'}
+    );
+    animation.addEventListener('finish',()=>{
+      if(closing)detail.open=false;
+      detail.classList.remove('is-animating','is-closing','is-opening');
+      detail.style.height='';
+      detail.style.overflow='';
+    },{once:true});
+  });
+});
 function storyStep(){return cards.length>1?cards[1].offsetLeft-cards[0].offsetLeft:gallery.clientWidth;}
 function currentStory(){return Math.max(0,Math.min(cards.length-1,Math.round(gallery.scrollLeft/Math.max(1,storyStep()))));}
 function updateGallery(){
