@@ -19,9 +19,9 @@
       const isCard = element.matches('.phase, .story, .benefits article, .journey-meta > div');
       const delay = isCard ? Math.min(siblings.indexOf(element), 3) * 75 : 0;
       const animation = element.animate([
-        { opacity: 0, transform: 'translateY(28px)' },
+        { opacity: 0, transform: 'translateY(16px)' },
         { opacity: 1, transform: 'translateY(0)' }
-      ], { duration: 760, delay, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' });
+      ], { duration: 540, delay, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' });
       active.add(animation);
       animation.finished.then(() => active.delete(animation), () => active.delete(animation));
       const revealOnFocus = () => animation.cancel();
