@@ -130,7 +130,7 @@ h3 { font-size: 24px; font-weight: 700; }
 .hero-details { display: inline-flex; gap: 10px; margin-top: 16px; color: var(--ink-soft); font-size: 12px; font-weight: 600; text-decoration: none; }
 .hero-details:hover, .hero-details:focus-visible { color: var(--wine); }
 .hero-visual { display: grid; grid-template-columns: minmax(0, 1fr) 126px; gap: 14px; align-items: end; }
-.portrait-frame { overflow: hidden; border-radius: 28px 28px 0 0; background: var(--white); box-shadow: var(--shadow); }
+.portrait-frame { overflow: hidden; border-radius: 50% 50% 0 0 / 25% 25% 0 0; background: var(--white); box-shadow: var(--shadow); }
 .portrait-frame img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 54% center; }
 .portrait-caption { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 20px; }
 .portrait-caption span { color: var(--copper); font-size: 9px; font-weight: 800; letter-spacing: .14em; }
@@ -333,7 +333,7 @@ footer { padding: 40px 0; background: var(--paper); }
   .hero-grid { grid-template-columns: 1fr; gap: 0; }
   .hero-copy { padding-bottom: 52px; }
   .hero-visual { width: min(720px, 100%); margin-inline: auto; }
-  .portrait-frame img { aspect-ratio: 16 / 11; object-position: 50% 37%; }
+  .portrait-frame img { aspect-ratio: 4 / 5; object-position: center; }
   .section-heading, .challenge-grid, .mentor-grid, .practical-grid { gap: 52px; }
   .method-grid { grid-template-columns: 1fr; }
   .method-feature { min-height: 460px; }
@@ -358,8 +358,8 @@ footer { padding: 40px 0; background: var(--paper); }
   .hero-facts { grid-template-columns: 1fr 1fr; }
   .hero-facts span:last-child { grid-column: 1 / -1; border-top: 1px solid var(--line); border-left: 0; }
   .hero-visual { grid-template-columns: 1fr; gap: 12px; }
-  .portrait-frame { border-radius: 22px; }
-  .portrait-frame img { aspect-ratio: 16 / 11; object-position: 50% 36%; }
+  .portrait-frame { border-radius: 50% 50% 0 0 / 25% 25% 0 0; }
+  .portrait-frame img { aspect-ratio: 4 / 5; object-position: center; }
   .portrait-caption { padding: 15px 16px; }
   .experience-seal { min-height: auto; flex-direction: row; align-items: center; justify-content: flex-start; gap: 18px; padding: 17px 20px; border-radius: 14px; }
   .experience-seal strong { font-size: 37px; }
