@@ -148,8 +148,6 @@ h3 { font-size: 24px; font-weight: 700; }
 .experience-seal strong { font-size: 46px; line-height: 1; letter-spacing: -.06em; }
 .experience-seal strong span { color: #d59c7d; font-size: 24px; }
 .experience-seal > span { margin-top: 12px; font-size: 9px; font-weight: 700; line-height: 1.5; }
-.hero-bottom { display: flex; justify-content: space-between; padding-block: 18px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 10px; font-weight: 700; letter-spacing: .12em; }
-.hero-bottom a { text-decoration: none; }
 
 .section-heading { display: grid; grid-template-columns: 1.1fr .7fr; gap: 80px; align-items: end; margin-bottom: 56px; }
 .section-heading > p { max-width: 430px; margin-bottom: 4px; color: var(--ink-soft); }
@@ -437,7 +435,6 @@ footer { padding: 40px 0; background: var(--paper); }
   .experience-seal { min-height: auto; flex-direction: row; align-items: center; justify-content: flex-start; gap: 18px; padding: 17px 20px; border-radius: 14px; }
   .experience-seal strong { font-size: 37px; }
   .experience-seal > span { margin: 0; }
-  .hero-bottom { display: none; }
   .section-heading, .challenge-grid, .mentor-grid, .practical-grid { grid-template-columns: 1fr; gap: 34px; }
   .section-heading { margin-bottom: 38px; }
   .section-heading > p { margin: 0; }
