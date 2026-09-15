@@ -1,0 +1,5 @@
+.openai/
+.sites-runtime/
+ASSETS.md
+*.log
+*.tar.gz
