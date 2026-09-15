@@ -428,6 +428,20 @@ footer { padding: 40px 0; background: var(--paper); }
   .hero-facts span { justify-content: center; text-align: center; }
   .hero-facts span:last-child { grid-column: 1 / -1; border-top: 1px solid var(--line); border-left: 0; }
   .hero-details { width: 100%; justify-content: center; }
+  .button > span[aria-hidden="true"],
+  .hero-details > span[aria-hidden="true"],
+  .text-link > span[aria-hidden="true"],
+  .story-link > span[aria-hidden="true"] { display: none; }
+  .play-small, .play-large, .video-library button > span { font-size: 0; }
+  .play-small::before, .play-large::before, .video-library button > span::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid currentColor;
+  }
   .hero-visual { grid-template-columns: 1fr; gap: 12px; }
   .portrait-frame { border-radius: 50% 50% 0 0 / 25% 25% 0 0; }
   .portrait-frame img { aspect-ratio: 4 / 5; object-position: center; }
@@ -468,6 +482,10 @@ footer { padding: 40px 0; background: var(--paper); }
   .gallery-controls p { margin: 0; font-size: 11px; font-weight: 700; }
   .gallery-hint { margin-left: 8px; color: var(--ink-soft); font-weight: 500; }
   .gallery-controls button { width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 50%; background: var(--white); cursor: pointer; }
+  .gallery-controls button { font-size: 0; }
+  .gallery-controls button::before { content: ""; display: inline-block; width: 8px; height: 8px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; }
+  #story-prev::before { transform: rotate(-135deg); }
+  #story-next::before { transform: rotate(45deg); }
   .gallery-controls button:disabled { opacity: .35; }
   .video-library { grid-template-columns: 1fr; }
   .mentor-photo img { aspect-ratio: 4 / 4.2; }
@@ -481,6 +499,10 @@ footer { padding: 40px 0; background: var(--paper); }
   .concept-notice-inner { padding: 34px 24px 26px; }
   .concept-notice h2 { font-size: 32px; }
   .concept-notice #concept-notice-description { font-size: 15px; }
+  .close-dialog { position: relative; font-size: 0; }
+  .close-dialog::before, .close-dialog::after { content: ""; position: absolute; top: 50%; left: 50%; width: 16px; height: 1px; background: currentColor; }
+  .close-dialog::before { transform: translate(-50%, -50%) rotate(45deg); }
+  .close-dialog::after { transform: translate(-50%, -50%) rotate(-45deg); }
   .mobile-application {
     position: fixed;
     right: 0;
