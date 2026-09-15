@@ -401,11 +401,15 @@ footer { padding: 40px 0; background: var(--paper); }
   h1 { font-size: clamp(40px, 12vw, 58px); }
   h2 { font-size: clamp(35px, 10vw, 48px); }
   .hero { padding-top: 50px; }
+  .hero-copy { text-align: center; }
+  .hero-copy h1, .hero-description { margin-inline: auto; }
   .hero-actions { align-items: stretch; flex-direction: column; gap: 22px; }
   .hero-actions .button { width: 100%; }
-  .watch-link { align-self: flex-start; }
+  .hero-actions .watch-link { align-self: center; }
   .hero-facts { grid-template-columns: 1fr 1fr; }
+  .hero-facts span { justify-content: center; text-align: center; }
   .hero-facts span:last-child { grid-column: 1 / -1; border-top: 1px solid var(--line); border-left: 0; }
+  .hero-details { width: 100%; justify-content: center; }
   .hero-visual { grid-template-columns: 1fr; gap: 12px; }
   .portrait-frame { border-radius: 50% 50% 0 0 / 25% 25% 0 0; }
   .portrait-frame img { aspect-ratio: 4 / 5; object-position: center; }
