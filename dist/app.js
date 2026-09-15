@@ -1,5 +1,13 @@
 const menu=document.querySelector('.menu-toggle');
 const nav=document.querySelector('#navigation');
+const conceptNotice=document.querySelector('#concept-notice');
+const conceptNoticeButton=document.querySelector('.concept-notice-button');
+if(conceptNotice&&conceptNoticeButton&&typeof conceptNotice.showModal==='function'){
+  conceptNotice.showModal();
+  document.body.style.overflow='hidden';
+  conceptNoticeButton.addEventListener('click',()=>conceptNotice.close());
+  conceptNotice.addEventListener('close',()=>{document.body.style.overflow='';});
+}
 function closeMenu(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Abrir menu');}
 menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';nav.classList.toggle('open',open);menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');});
 nav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu();});
